@@ -28,7 +28,7 @@ function WP_Auth(wpurl, logged_in_key, logged_in_salt,
     this.cookiename = 'wordpress_logged_in_' + md5.digest('hex');
     this.salt = logged_in_key + logged_in_salt;
 
-    this.db = require('mysql-native').createTCPClient(mysql_host);
+    this.db = require('mysql2').createTCPClient(mysql_host);
     this.db.auth(mysql_db, mysql_user, mysql_pass);
     this.table_prefix = wp_table_prefix;
 
