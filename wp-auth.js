@@ -21,14 +21,14 @@ function sanitizeValue(value) {
 }
 
 function WP_Auth(wpurl, logged_in_key, logged_in_salt,
-    mysql_host, mysql_user, mysql_pass, mysql_db,
+    mysql_host, mysql_port, mysql_user, mysql_pass, mysql_db,
     wp_table_prefix) {
     var md5 = crypto.createHash('md5');
     md5.update(wpurl);
     this.cookiename = 'wordpress_logged_in_' + md5.digest('hex');
     this.salt = logged_in_key + logged_in_salt;
 
-    this.db = require('mysql2').createTCPClient(mysql_host);
+    this.db = require('mysql-native').createTCPClient(mysql_host, mysql_port);
     this.db.auth(mysql_db, mysql_user, mysql_pass);
     this.table_prefix = wp_table_prefix;
 
@@ -133,10 +133,10 @@ WP_Auth.prototype.reverseUserMeta = function(key, value, callback) {
 };
 
 exports.create = function(wpurl, logged_in_key, logged_in_salt,
-    mysql_host, mysql_user, mysql_pass, mysql_db,
+    mysql_host, mysql_port, mysql_user, mysql_pass, mysql_db,
     wp_table_prefix) {
     return new WP_Auth(wpurl, logged_in_key, logged_in_salt,
-        mysql_host, mysql_user, mysql_pass, mysql_db,
+        mysql_host, mysql_port, mysql_user, mysql_pass, mysql_db,
         wp_table_prefix);
 };
 
