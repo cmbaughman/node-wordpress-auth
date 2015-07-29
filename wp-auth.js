@@ -177,7 +177,7 @@ function Valid_Auth(data, auth) {
         hmac2.update(user_login + '|' + expiration + '|' + token);
         var cookieHash = hmac2.digest('hex');
         if (hash == cookieHash) {
-            self.emit('auth', true, id);
+            self.emit('auth', true, user_login);
         } else {
             self.emit('auth', false, 0, "invalid hash");
         }

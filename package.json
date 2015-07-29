@@ -1,5 +1,9 @@
 {
   "author": "Nightgunner5 <nightgunner5@llamaslayers.net> (http://llamaslayers.net)",
+	"contributors": [{
+		"name": "Chris Baughman",
+		"email": "cmbaughman@outlook.com"
+	}],
   "name": "wordpress-auth",
   "description": "Authenticate users through node using WordPress cookies",
   "version": "0.0.1",
@@ -9,7 +13,7 @@
     "url": "git://github.com/Nightgunner5/node-wordpress-auth.git"
   },
   "engines": {
-    "node": ">=0.4"
+    "node": ">=0.8"
   },
   "dependencies": {
     "mysql-native": "^0.4.7",
