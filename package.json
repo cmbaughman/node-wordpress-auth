@@ -13,8 +13,14 @@
     "url": "git://github.com/Nightgunner5/node-wordpress-auth.git"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.8",
+		"npm": ">=2.0"
   },
+	"keywords": [
+		"wordpress",
+		"authentication",
+		"wp"
+	],
   "dependencies": {
     "mysql-native": "^0.4.7",
     "mysql2": "^0.15.8"
