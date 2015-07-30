@@ -1,9 +1,12 @@
 {
   "author": "Nightgunner5 <nightgunner5@llamaslayers.net> (http://llamaslayers.net)",
-	"contributors": [{
-		"name": "Chris Baughman",
-		"email": "cmbaughman@outlook.com"
-	}],
+  "contributors": [
+    {
+      "name": "Chris Baughman",
+      "email": "cmbaughman@outlook.com",
+      "url": "http://blog.cmbaughman.com"
+    }
+  ],
   "name": "wordpress-auth",
   "description": "Authenticate users through node using WordPress cookies",
   "version": "0.0.2",
@@ -14,14 +17,16 @@
   },
   "engines": {
     "node": ">=0.8",
-		"npm": ">=2.0"
+    "npm": ">=2.0"
   },
-	"keywords": [
-		"wordpress",
-		"authentication",
-		"wp"
-	],
+  "keywords": [
+    "wordpress",
+    "authentication",
+    "wp"
+  ],
+  "license": "MIT",
   "dependencies": {
+    "async": "^1.4.0",
     "mysql-native": "^0.4.7",
     "mysql2": "^0.15.8"
   },

@@ -10,7 +10,7 @@ function sanitizeValue(value) {
             return Number.toString.call(value);
         case 'string':
             try {
-                // If it's a serialized string, serialize it again so it comes back out of the database the same way.
+                // If it is a serialized string, serialize it again so it comes back out of the database the same way.
                 return phpjs.serialize(phpjs.serialize(phpjs.unserialize(value))).replace(/(\'|\\)/g, '\\$1');
             } catch (ex) {
                 return value.replace(/(\'|\\)/g, '\\$1');
@@ -191,14 +191,16 @@ function Valid_Auth(data, auth) {
 
 
     var found = false;
-    auth.db.query('select ID, user_pass from ' + auth.table_prefix + 'users where user_login = \'' + user_login.replace(/(\'|\\)/g, '\\$1') + '\'').on('row', function(data) {
+    auth.db.query('select ID, user_pass from ' + auth.table_prefix + 'users where user_login = \'' + user_login.replace(/(\'|\\)/g, '\\$1') + '\'')
+      .on('row', function(data) {
         found = true;
         auth.known_hashes[user_login] = {
             frag: data.user_pass.substr(8, 4),
             id: data.ID
         };
         auth.known_hashes_timeout[user_login] = +new Date + auth.timeout;
-    }).on('end', function() {
+      })
+      .on('end', function() {
         if (!found) {
             auth.known_hashes[user_login] = {
                 frag: '__fail__',
